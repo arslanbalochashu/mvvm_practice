@@ -1,0 +1,40 @@
+
+import 'package:another_flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar_route.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+class Utils {
+
+  static toastMessage(String message){
+    Fluttertoast.showToast(msg: message);
+    
+  }
+  
+  static void flushBarErrorMessage (String message , BuildContext context){
+    
+    showFlushbar(context: context, flushbar: Flushbar(
+      message: message,
+      forwardAnimationCurve: Curves.decelerate,
+      padding: EdgeInsets.all(15),
+      margin: EdgeInsets.all(20),
+      backgroundColor: Colors.red,
+      flushbarPosition: FlushbarPosition.TOP,
+      reverseAnimationCurve: Curves.easeInOut,
+      positionOffset: 20,
+      borderRadius: BorderRadius.circular(8),
+      icon: Icon(Icons.error,size: 28 ,color: Colors.white,),
+      duration: Duration(
+        seconds: 3,
+      ),
+    )..show(context),
+    );
+  }
+
+  static snakBar(String message, BuildContext context){
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(message),),
+    );
+  }
+}
